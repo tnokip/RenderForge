@@ -1,0 +1,56 @@
+.
+├── assets
+├── docs
+│   └── structure.txt
+├── examples
+├── include
+│   ├── Core
+│   ├── Loader
+│   ├── Math
+│   ├── Platform
+│   ├── Renderer
+│   ├── Rubiks
+│   ├── Scene
+│   └── UI
+├── scripts
+├── src
+├── tests
+└── third_party
+
+17 directories, 1 file
+
+.
+├── CMakeLists.txt
+├── assets
+│   ├── models
+│   └── textures
+├── docs
+│   └── structure.txt
+├── examples
+├── include
+│   ├── core
+│   ├── loader
+│   ├── math
+│   ├── platform
+│   │   ├── input.h
+│   │   └── window.hpp
+│   ├── renderer
+│   ├── rubiks
+│   ├── scene
+│   └── ui
+├── scripts
+├── src
+│   ├── core
+│   ├── main.cpp
+│   ├── opengl
+│   ├── platform
+│   │   ├── factory.cpp
+│   │   └── sdl3
+│   │       ├── sdl_window.cpp
+│   │       └── sdl_window.hpp
+│   ├── software
+│   └── vulkan
+├── tests
+└── third_party
+
+25 directories, 8 files
