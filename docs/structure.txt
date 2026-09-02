@@ -1,32 +1,394 @@
 .
-├── assets
-├── docs
-│   └── structure.txt
-├── examples
-├── include
-│   ├── Core
-│   ├── Loader
-│   ├── Math
-│   ├── Platform
-│   ├── Renderer
-│   ├── Rubiks
-│   ├── Scene
-│   └── UI
-├── scripts
-├── src
-├── tests
-└── third_party
-
-17 directories, 1 file
-
-.
 ├── CMakeLists.txt
+├── Makefile
 ├── assets
 │   ├── models
 │   └── textures
+├── copilot
+│   ├── factory.cpp
+│   ├── input.h
+│   ├── main.cpp
+│   ├── renderer.hpp
+│   ├── sdl_renderer.cpp
+│   ├── sdl_renderer.hpp
+│   ├── sdl_window.cpp
+│   ├── sdl_window.hpp
+│   └── window.hpp
 ├── docs
 │   └── structure.txt
 ├── examples
+├── external
+│   └── imgui
+│       ├── LICENSE.txt
+│       ├── backends
+│       │   ├── imgui_impl_allegro5.cpp
+│       │   ├── imgui_impl_allegro5.h
+│       │   ├── imgui_impl_android.cpp
+│       │   ├── imgui_impl_android.h
+│       │   ├── imgui_impl_dx10.cpp
+│       │   ├── imgui_impl_dx10.h
+│       │   ├── imgui_impl_dx11.cpp
+│       │   ├── imgui_impl_dx11.h
+│       │   ├── imgui_impl_dx12.cpp
+│       │   ├── imgui_impl_dx12.h
+│       │   ├── imgui_impl_dx9.cpp
+│       │   ├── imgui_impl_dx9.h
+│       │   ├── imgui_impl_glfw.cpp
+│       │   ├── imgui_impl_glfw.h
+│       │   ├── imgui_impl_glut.cpp
+│       │   ├── imgui_impl_glut.h
+│       │   ├── imgui_impl_metal.h
+│       │   ├── imgui_impl_metal.mm
+│       │   ├── imgui_impl_metal4.h
+│       │   ├── imgui_impl_metal4.mm
+│       │   ├── imgui_impl_null.cpp
+│       │   ├── imgui_impl_null.h
+│       │   ├── imgui_impl_opengl2.cpp
+│       │   ├── imgui_impl_opengl2.h
+│       │   ├── imgui_impl_opengl3.cpp
+│       │   ├── imgui_impl_opengl3.h
+│       │   ├── imgui_impl_opengl3_loader.h
+│       │   ├── imgui_impl_osx.h
+│       │   ├── imgui_impl_osx.mm
+│       │   ├── imgui_impl_qnx.cpp
+│       │   ├── imgui_impl_qnx.h
+│       │   ├── imgui_impl_sdl2.cpp
+│       │   ├── imgui_impl_sdl2.h
+│       │   ├── imgui_impl_sdl3.cpp
+│       │   ├── imgui_impl_sdl3.h
+│       │   ├── imgui_impl_sdlgpu3.cpp
+│       │   ├── imgui_impl_sdlgpu3.h
+│       │   ├── imgui_impl_sdlgpu3_shaders.h
+│       │   ├── imgui_impl_sdlrenderer2.cpp
+│       │   ├── imgui_impl_sdlrenderer2.h
+│       │   ├── imgui_impl_sdlrenderer3.cpp
+│       │   ├── imgui_impl_sdlrenderer3.h
+│       │   ├── imgui_impl_vulkan.cpp
+│       │   ├── imgui_impl_vulkan.h
+│       │   ├── imgui_impl_wgpu.cpp
+│       │   ├── imgui_impl_wgpu.h
+│       │   ├── imgui_impl_win32.cpp
+│       │   ├── imgui_impl_win32.h
+│       │   ├── sdlgpu3
+│       │   │   ├── build_instructions.txt
+│       │   │   ├── shader.frag
+│       │   │   └── shader.vert
+│       │   └── vulkan
+│       │       ├── build_instructions.txt
+│       │       ├── generate_spv.sh
+│       │       ├── glsl_shader.frag
+│       │       └── glsl_shader.vert
+│       ├── docs
+│       │   ├── BACKENDS.md
+│       │   ├── CHANGELOG.txt
+│       │   ├── CONTRIBUTING.md
+│       │   ├── EXAMPLES.md
+│       │   ├── FAQ.md
+│       │   ├── FONTS.md
+│       │   ├── README.md
+│       │   ├── SECURITY.md
+│       │   └── TODO.txt
+│       ├── examples
+│       │   ├── README.txt
+│       │   ├── example_allegro5
+│       │   │   ├── README.md
+│       │   │   ├── example_allegro5.vcxproj
+│       │   │   ├── example_allegro5.vcxproj.filters
+│       │   │   ├── imconfig_allegro5.h
+│       │   │   └── main.cpp
+│       │   ├── example_android_opengl3
+│       │   │   ├── CMakeLists.txt
+│       │   │   ├── android
+│       │   │   │   ├── app
+│       │   │   │   │   ├── build.gradle
+│       │   │   │   │   └── src
+│       │   │   │   │       └── main
+│       │   │   │   │           ├── AndroidManifest.xml
+│       │   │   │   │           └── java
+│       │   │   │   │               └── MainActivity.kt
+│       │   │   │   ├── build.gradle
+│       │   │   │   ├── gradle
+│       │   │   │   │   └── libs.versions.toml
+│       │   │   │   └── settings.gradle
+│       │   │   └── main.cpp
+│       │   ├── example_apple_metal
+│       │   │   ├── Makefile
+│       │   │   ├── README.md
+│       │   │   ├── example_apple_metal.xcodeproj
+│       │   │   │   └── project.pbxproj
+│       │   │   ├── iOS
+│       │   │   │   ├── Info-iOS.plist
+│       │   │   │   └── LaunchScreen.storyboard
+│       │   │   ├── macOS
+│       │   │   │   ├── Info-macOS.plist
+│       │   │   │   └── MainMenu.storyboard
+│       │   │   └── main.mm
+│       │   ├── example_apple_metal4
+│       │   │   ├── Makefile
+│       │   │   ├── README.md
+│       │   │   ├── example_apple_metal4.xcodeproj
+│       │   │   │   └── project.pbxproj
+│       │   │   ├── iOS
+│       │   │   │   ├── Info-iOS.plist
+│       │   │   │   └── LaunchScreen.storyboard
+│       │   │   ├── macOS
+│       │   │   │   ├── Info-macOS.plist
+│       │   │   │   └── MainMenu.storyboard
+│       │   │   └── main.mm
+│       │   ├── example_apple_opengl2
+│       │   │   ├── Makefile
+│       │   │   ├── example_apple_opengl2.xcodeproj
+│       │   │   │   └── project.pbxproj
+│       │   │   └── main.mm
+│       │   ├── example_apple_opengl3
+│       │   │   ├── Makefile
+│       │   │   ├── example_apple_opengl3.xcodeproj
+│       │   │   │   └── project.pbxproj
+│       │   │   └── main.mm
+│       │   ├── example_glfw_metal
+│       │   │   ├── Makefile
+│       │   │   └── main.mm
+│       │   ├── example_glfw_opengl2
+│       │   │   ├── Makefile
+│       │   │   ├── build_win32.bat
+│       │   │   ├── example_glfw_opengl2.vcxproj
+│       │   │   ├── example_glfw_opengl2.vcxproj.filters
+│       │   │   └── main.cpp
+│       │   ├── example_glfw_opengl3
+│       │   │   ├── Makefile
+│       │   │   ├── Makefile.emscripten
+│       │   │   ├── build_win32.bat
+│       │   │   ├── example_glfw_opengl3.vcxproj
+│       │   │   ├── example_glfw_opengl3.vcxproj.filters
+│       │   │   └── main.cpp
+│       │   ├── example_glfw_vulkan
+│       │   │   ├── CMakeLists.txt
+│       │   │   ├── Makefile
+│       │   │   ├── build_win32.bat
+│       │   │   ├── build_win64.bat
+│       │   │   ├── example_glfw_vulkan.vcxproj
+│       │   │   ├── example_glfw_vulkan.vcxproj.filters
+│       │   │   └── main.cpp
+│       │   ├── example_glfw_wgpu
+│       │   │   ├── CMakeLists.txt
+│       │   │   ├── Makefile.emscripten
+│       │   │   ├── README.md
+│       │   │   └── main.cpp
+│       │   ├── example_glut_opengl2
+│       │   │   ├── Makefile
+│       │   │   ├── example_glut_opengl2.vcxproj
+│       │   │   ├── example_glut_opengl2.vcxproj.filters
+│       │   │   └── main.cpp
+│       │   ├── example_null
+│       │   │   ├── Makefile
+│       │   │   ├── build_win32.bat
+│       │   │   ├── example_null.vcxproj
+│       │   │   ├── example_null.vcxproj.filters
+│       │   │   └── main.cpp
+│       │   ├── example_qnx_opengl3
+│       │   │   ├── Makefile
+│       │   │   ├── README.md
+│       │   │   ├── common.mk
+│       │   │   ├── main.cpp
+│       │   │   └── nto
+│       │   │       ├── Makefile
+│       │   │       ├── aarch64
+│       │   │       │   ├── Makefile
+│       │   │       │   └── o.le
+│       │   │       │       └── Makefile
+│       │   │       └── x86_64
+│       │   │           ├── Makefile
+│       │   │           └── o
+│       │   │               └── Makefile
+│       │   ├── example_qnx_vulkan
+│       │   │   ├── Makefile
+│       │   │   ├── README.md
+│       │   │   ├── common.mk
+│       │   │   ├── main.cpp
+│       │   │   └── nto
+│       │   │       ├── Makefile
+│       │   │       ├── aarch64
+│       │   │       │   ├── Makefile
+│       │   │       │   └── o.le
+│       │   │       │       └── Makefile
+│       │   │       └── x86_64
+│       │   │           ├── Makefile
+│       │   │           └── o
+│       │   │               └── Makefile
+│       │   ├── example_sdl2_directx11
+│       │   │   ├── build_win32.bat
+│       │   │   ├── example_sdl2_directx11.vcxproj
+│       │   │   ├── example_sdl2_directx11.vcxproj.filters
+│       │   │   └── main.cpp
+│       │   ├── example_sdl2_metal
+│       │   │   ├── Makefile
+│       │   │   └── main.mm
+│       │   ├── example_sdl2_opengl2
+│       │   │   ├── Makefile
+│       │   │   ├── README.md
+│       │   │   ├── build_win32.bat
+│       │   │   ├── example_sdl2_opengl2.vcxproj
+│       │   │   ├── example_sdl2_opengl2.vcxproj.filters
+│       │   │   └── main.cpp
+│       │   ├── example_sdl2_opengl3
+│       │   │   ├── Makefile
+│       │   │   ├── Makefile.emscripten
+│       │   │   ├── README.md
+│       │   │   ├── build_win32.bat
+│       │   │   ├── example_sdl2_opengl3.vcxproj
+│       │   │   ├── example_sdl2_opengl3.vcxproj.filters
+│       │   │   └── main.cpp
+│       │   ├── example_sdl2_sdlrenderer2
+│       │   │   ├── Makefile
+│       │   │   ├── README.md
+│       │   │   ├── build_win32.bat
+│       │   │   ├── example_sdl2_sdlrenderer2.vcxproj
+│       │   │   ├── example_sdl2_sdlrenderer2.vcxproj.filters
+│       │   │   └── main.cpp
+│       │   ├── example_sdl2_vulkan
+│       │   │   ├── Makefile
+│       │   │   ├── build_win32.bat
+│       │   │   ├── build_win64.bat
+│       │   │   ├── example_sdl2_vulkan.vcxproj
+│       │   │   ├── example_sdl2_vulkan.vcxproj.filters
+│       │   │   └── main.cpp
+│       │   ├── example_sdl2_wgpu
+│       │   │   ├── CMakeLists.txt
+│       │   │   ├── Makefile.emscripten
+│       │   │   ├── README.md
+│       │   │   └── main.cpp
+│       │   ├── example_sdl3_directx11
+│       │   │   ├── build_win32.bat
+│       │   │   ├── example_sdl3_directx11.vcxproj
+│       │   │   ├── example_sdl3_directx11.vcxproj.filters
+│       │   │   └── main.cpp
+│       │   ├── example_sdl3_metal
+│       │   │   ├── Makefile
+│       │   │   └── main.mm
+│       │   ├── example_sdl3_metal4
+│       │   │   ├── Makefile
+│       │   │   └── main.mm
+│       │   ├── example_sdl3_opengl3
+│       │   │   ├── Makefile
+│       │   │   ├── Makefile.emscripten
+│       │   │   ├── README.md
+│       │   │   ├── build_win32.bat
+│       │   │   ├── build_win64.bat
+│       │   │   ├── example_sdl3_opengl3.vcxproj
+│       │   │   ├── example_sdl3_opengl3.vcxproj.filters
+│       │   │   └── main.cpp
+│       │   ├── example_sdl3_sdlgpu3
+│       │   │   ├── Makefile
+│       │   │   ├── build_win64.bat
+│       │   │   ├── example_sdl3_sdlgpu3.vcxproj
+│       │   │   ├── example_sdl3_sdlgpu3.vcxproj.filters
+│       │   │   └── main.cpp
+│       │   ├── example_sdl3_sdlrenderer3
+│       │   │   ├── Makefile
+│       │   │   ├── build_win32.bat
+│       │   │   ├── example_sdl3_sdlrenderer3.vcxproj
+│       │   │   ├── example_sdl3_sdlrenderer3.vcxproj.filters
+│       │   │   └── main.cpp
+│       │   ├── example_sdl3_vulkan
+│       │   │   ├── Makefile
+│       │   │   ├── build_win32.bat
+│       │   │   ├── build_win64.bat
+│       │   │   ├── example_sdl3_vulkan.vcxproj
+│       │   │   ├── example_sdl3_vulkan.vcxproj.filters
+│       │   │   └── main.cpp
+│       │   ├── example_sdl3_wgpu
+│       │   │   ├── CMakeLists.txt
+│       │   │   ├── Makefile.emscripten
+│       │   │   ├── README.md
+│       │   │   └── main.cpp
+│       │   ├── example_win32_directx10
+│       │   │   ├── build_win32.bat
+│       │   │   ├── example_win32_directx10.vcxproj
+│       │   │   ├── example_win32_directx10.vcxproj.filters
+│       │   │   └── main.cpp
+│       │   ├── example_win32_directx11
+│       │   │   ├── build_win32.bat
+│       │   │   ├── example_win32_directx11.vcxproj
+│       │   │   ├── example_win32_directx11.vcxproj.filters
+│       │   │   └── main.cpp
+│       │   ├── example_win32_directx12
+│       │   │   ├── build_win32.bat
+│       │   │   ├── example_win32_directx12.vcxproj
+│       │   │   ├── example_win32_directx12.vcxproj.filters
+│       │   │   └── main.cpp
+│       │   ├── example_win32_directx9
+│       │   │   ├── build_win32.bat
+│       │   │   ├── example_win32_directx9.vcxproj
+│       │   │   ├── example_win32_directx9.vcxproj.filters
+│       │   │   └── main.cpp
+│       │   ├── example_win32_opengl3
+│       │   │   ├── build_mingw.bat
+│       │   │   ├── build_win32.bat
+│       │   │   ├── example_win32_opengl3.vcxproj
+│       │   │   ├── example_win32_opengl3.vcxproj.filters
+│       │   │   └── main.cpp
+│       │   ├── example_win32_vulkan
+│       │   │   ├── build_win32.bat
+│       │   │   ├── build_win64.bat
+│       │   │   ├── example_win32_vulkan.vcxproj
+│       │   │   ├── example_win32_vulkan.vcxproj.filters
+│       │   │   └── main.cpp
+│       │   ├── imgui_examples.sln
+│       │   └── libs
+│       │       ├── emscripten
+│       │       │   ├── emscripten_mainloop_stub.h
+│       │       │   └── shell_minimal.html
+│       │       ├── glfw
+│       │       │   ├── COPYING.txt
+│       │       │   ├── include
+│       │       │   │   └── GLFW
+│       │       │   │       ├── glfw3.h
+│       │       │   │       └── glfw3native.h
+│       │       │   ├── lib-vc2010-32
+│       │       │   │   └── glfw3.lib
+│       │       │   └── lib-vc2010-64
+│       │       │       └── glfw3.lib
+│       │       └── usynergy
+│       │           ├── README.txt
+│       │           ├── uSynergy.c
+│       │           └── uSynergy.h
+│       ├── imconfig.h
+│       ├── imgui.cpp
+│       ├── imgui.h
+│       ├── imgui_demo.cpp
+│       ├── imgui_draw.cpp
+│       ├── imgui_internal.h
+│       ├── imgui_tables.cpp
+│       ├── imgui_widgets.cpp
+│       ├── imstb_rectpack.h
+│       ├── imstb_textedit.h
+│       ├── imstb_truetype.h
+│       └── misc
+│           ├── README.txt
+│           ├── cpp
+│           │   ├── README.txt
+│           │   ├── imgui_stdlib.cpp
+│           │   └── imgui_stdlib.h
+│           ├── debuggers
+│           │   ├── README.txt
+│           │   ├── imgui.gdb
+│           │   ├── imgui.natstepfilter
+│           │   ├── imgui.natvis
+│           │   └── imgui_lldb.py
+│           ├── fonts
+│           │   ├── Cousine-Regular.ttf
+│           │   ├── DroidSans.ttf
+│           │   ├── Karla-Regular.ttf
+│           │   ├── ProggyClean.ttf
+│           │   ├── ProggyTiny.ttf
+│           │   ├── Roboto-Medium.ttf
+│           │   └── binary_to_compressed_c.cpp
+│           ├── freetype
+│           │   ├── README.md
+│           │   ├── imgui_freetype.cpp
+│           │   └── imgui_freetype.h
+│           └── single_file
+│               └── imgui_single_file.h
 ├── include
 │   ├── core
 │   ├── loader
@@ -35,6 +397,7 @@
 │   │   ├── input.h
 │   │   └── window.hpp
 │   ├── renderer
+│   │   └── renderer.hpp
 │   ├── rubiks
 │   ├── scene
 │   └── ui
@@ -46,6 +409,8 @@
 │   ├── platform
 │   │   ├── factory.cpp
 │   │   └── sdl3
+│   │       ├── sdl_renderer.cpp
+│   │       ├── sdl_renderer.hpp
 │   │       ├── sdl_window.cpp
 │   │       └── sdl_window.hpp
 │   ├── software
@@ -53,4 +418,4 @@
 ├── tests
 └── third_party
 
-25 directories, 8 files
+107 directories, 312 files

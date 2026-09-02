@@ -4,7 +4,7 @@
 
 struct SDL_Window;
 
-namespace mr
+namespace rf
 {
 
 class SDLWindow : public Window 

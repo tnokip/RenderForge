@@ -1,19 +1,28 @@
 #include "../include/platform/window.hpp"
+#include "../include/renderer/renderer.hpp"
 
 int main()
 {
-    auto window = mr::createWindow();
+    std::unique_ptr<rf::Window> window = rf::createWindow();
+    std::unique_ptr<rf::Renderer> renderer = rf::createRenderer();
 
-    if(!window->create(800,600,"Renderer"))
+    if(!window->create(rf::WIDTH,rf::HEIGHT,"RenderForge"))
     {
         return 1;
+    }
+
+    if(!renderer->create(window, nullptr ))
+    {
+        return 2;
     }
 
     while(!window->shouldClose())
     {
         window->pollEvents();
-    
-
+        
+        renderer->clear(234, 132, 43, 255); 
+        renderer->present();
+      
     }
 
     return 0;
