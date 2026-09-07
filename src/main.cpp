@@ -20,7 +20,7 @@ int main()
     {
         window->pollEvents();
         
-        renderer->clear(234, 132, 43, 255); 
+        renderer->clear(255, 158, 31, 255); 
         renderer->present();
       
     }
