@@ -1,5 +1,6 @@
 #include "../../include/platform/window.hpp"
-#include "sdl3/sdl_renderer.hpp"
+//#include "sdl3/sdl_renderer.hpp"
+#include "../software/softwarerenderer.hpp"
 #include "sdl3/sdl_window.hpp"
 
 #include <memory>
@@ -13,7 +14,7 @@ std::unique_ptr<Window> createWindow()
 
 std::unique_ptr<Renderer> createRenderer()
 {
-    return std::make_unique<SDLRenderer>();
+    return std::make_unique<SoftwareRenderer>();
 }
 
 }

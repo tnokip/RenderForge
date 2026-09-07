@@ -21,7 +21,7 @@ namespace rf
         void setPixel(int x, int y, color color);
 
         int width() const {return m_width;}
-        int heigth() const {return m_height;}
+        int height() const {return m_height;}
 
         const uint32_t* data() const {return m_pixels.data(); }
 
