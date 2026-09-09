@@ -2,10 +2,13 @@
 
 #include "../platform/window.hpp"
 #include <SDL3/SDL_render.h>
+#include <cstdint>
 #include <memory>
 
 namespace rf
 {
+
+class FrameBuffer;
 
 class Renderer
 {
@@ -16,6 +19,7 @@ class Renderer
         virtual bool shouldClose() const = 0;
 
         virtual void* nativeHandle() = 0;
+        virtual FrameBuffer* getframebuffer() {return nullptr;}
 
         virtual void clear(uint8_t r, uint8_t g, uint8_t b, uint8_t a) = 0;
         virtual void present() = 0;

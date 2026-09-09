@@ -1,4 +1,4 @@
-#include "../../include/core/framebuffer.hpp"
+#include "../../include/renderer/framebuffer.hpp"
 #include <algorithm>
 #include <cstdint>
 

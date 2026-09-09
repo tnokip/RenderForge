@@ -1,5 +1,5 @@
 # pragma once
-#include "../../include/core/framebuffer.hpp"
+#include "../../include/renderer/framebuffer.hpp"
 #include "../../include/renderer/renderer.hpp"
 
 struct SDL_Renderer;
@@ -26,7 +26,9 @@ namespace rf
 
         void clear(uint8_t r, uint8_t g, uint8_t b, uint8_t a) override;
         void present() override;
-    };
+
+        FrameBuffer* getframebuffer() override;
+     };
 
 }
 

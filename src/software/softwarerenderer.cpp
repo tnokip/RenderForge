@@ -21,6 +21,8 @@ namespace rf
         m_sdlrenderer = SDL_CreateRenderer(sdlwin, nullptr);
         if(!m_sdlrenderer) return false;
 
+        SDL_SetRenderVSync(m_sdlrenderer, 1);
+
         m_sdltexture = SDL_CreateTexture(
                 m_sdlrenderer,
                 SDL_PIXELFORMAT_RGBA32 ,
@@ -51,5 +53,9 @@ namespace rf
         SDL_RenderPresent(m_sdlrenderer);
     }
 
+    FrameBuffer* SoftwareRenderer::getframebuffer()
+    {
+        return &m_framebuffer;
+    }
 }
 
