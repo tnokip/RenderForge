@@ -7,6 +7,7 @@ SRC = src/main.cpp	src/platform/factory.cpp	\
 	  src/platform/sdl3/sdl_renderer.cpp	\
 	  src/core/framebuffer.cpp	\
 	  src/core/line.cpp	\
+	  src/core/shape.cpp	\
 	  src/software/softwarerenderer.cpp
 OBJ = $(SRC:.cpp=.o)
 TARGET = renderer
