@@ -1,4 +1,5 @@
 #include "../../include/renderer/line.hpp"
+#include <algorithm>
 
 namespace rf
 {
@@ -18,6 +19,7 @@ void Line::draw(uint8_t r, uint8_t g, uint8_t b, uint8_t a)
     int x = x0, y = y0;
     while (true)
     {
+        coords.push_back({x,y});
         fb.setPixel(x, y, l);
         if (x == x1 && y == y1) break;
  
@@ -26,7 +28,18 @@ void Line::draw(uint8_t r, uint8_t g, uint8_t b, uint8_t a)
         if (e2 <  dx) { err += dx; y += sy; }
     }
 
-
 }
+
+std::vector<std::pair<int,int>> Line::coordinates()
+{
+    std::sort(coords.begin(),coords.end(),[](const std::pair<int,int>& a,const std::pair<int,int>& b)
+            {
+                return a.second < b.second;
+            });
+    coords.resize(600,{0,0});
+    return coords;
+}
+
+
 
 }
